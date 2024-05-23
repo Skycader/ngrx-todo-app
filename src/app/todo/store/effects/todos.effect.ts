@@ -16,6 +16,11 @@ import {
 
 @Injectable()
 export class TodoEffect {
+  /**
+   * Add todo chain:
+   * addTodo => getTodo
+   *
+   */
   getTodos$ = createEffect(() =>
     this.action$.pipe(
       ofType(getTodosAction),
