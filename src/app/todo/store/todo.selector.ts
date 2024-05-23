@@ -6,7 +6,7 @@ export const todoFeatureSelector = (
   state: AppStateInterface,
 ): TodoStateInterface => state.todo;
 
-export const getTodosSelector = createSelector(
+export const todosSelector = createSelector(
   todoFeatureSelector,
   (todoState: TodoStateInterface) => todoState.todos,
 );
