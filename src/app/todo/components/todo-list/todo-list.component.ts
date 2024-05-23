@@ -14,7 +14,7 @@ import { todosSelector } from '../../store/todo.selector';
 export class TodoListComponent {
   public todos$ = this.store.pipe(select(todosSelector));
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(private store: Store<AppStateInterface>) { }
 
   ngOnInit(): void {
     this.store.dispatch(getTodosAction());
@@ -25,9 +25,10 @@ export class TodoListComponent {
   }
 
   public addSimpleTodo() {
+    const title = prompt('title: ');
     this.addTodo({
       id: Date.now(),
-      title: 'TITLE',
+      title: title || '',
       description: 'OK',
       deadline: 101,
       done: false,

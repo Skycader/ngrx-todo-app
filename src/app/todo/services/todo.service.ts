@@ -7,10 +7,10 @@ import { db } from '../database/db';
   providedIn: 'root',
 })
 export class TodoService {
-  constructor() {}
+  constructor() { }
 
   public getTodos(): Observable<TodoInterface[]> {
-    return from(db.todo.toArray());
+    return from(db.todo.orderBy('id').reverse().toArray());
   }
 
   public addTodo(todo: TodoInterface): Observable<number> {
