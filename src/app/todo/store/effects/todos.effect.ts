@@ -13,6 +13,8 @@ import {
   addTodoFailureAction,
   addTodoSuccessAction,
 } from '../actions/add-todo.action';
+import { Store } from '@ngrx/store';
+import { AppStateInterface } from '../../../models/app-state.model';
 
 @Injectable()
 export class TodoEffect {
@@ -38,6 +40,7 @@ export class TodoEffect {
       switchMap(({ todo }) => {
         return this.todoService.addTodo(todo).pipe(
           map(() => {
+            this.store.dispatch(getTodosAction());
             return addTodoSuccessAction();
           }),
           catchError(() => {
@@ -51,5 +54,6 @@ export class TodoEffect {
   constructor(
     private action$: Actions,
     private todoService: TodoService,
+    private store: Store<AppStateInterface>,
   ) {}
 }
