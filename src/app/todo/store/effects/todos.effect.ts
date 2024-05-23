@@ -13,8 +13,6 @@ import {
   addTodoFailureAction,
   addTodoSuccessAction,
 } from '../actions/add-todo.action';
-import { Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../models/app-state.model';
 
 @Injectable()
 export class TodoEffect {
