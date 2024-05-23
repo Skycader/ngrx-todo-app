@@ -5,7 +5,7 @@ import { TodoInterface } from '../../models/todo.model';
 export const getTodosAction = createAction(ActionTypes.GET_TODOS);
 export const getTodosSuccessAction = createAction(
   ActionTypes.GET_TODOS_SUCCESS,
-  props<{ todo: TodoInterface[] }>(),
+  props<{ todos: TodoInterface[] }>(),
 );
 export const getTodosFailureAction = createAction(
   ActionTypes.GET_TODOS_FAILURE,

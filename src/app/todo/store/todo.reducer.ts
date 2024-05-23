@@ -5,8 +5,8 @@ export const initialState: TodoStateInterface = {
   todos: [],
 };
 
-const todoReducer = createReducer(initialState);
+const reducer = createReducer(initialState);
 
-export function reducer(state: TodoStateInterface, action: Action) {
-  return todoReducer(state, action);
+export function todoReducer(state: TodoStateInterface, action: Action) {
+  return reducer(state, action);
 }
