@@ -40,7 +40,6 @@ export class TodoEffect {
       switchMap(({ todo }) => {
         return this.todoService.addTodo(todo).pipe(
           map(() => {
-            this.store.dispatch(getTodosAction());
             return addTodoSuccessAction();
           }),
           catchError(() => {
@@ -51,9 +50,17 @@ export class TodoEffect {
     ),
   );
 
+  refreshAction$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(addTodoSuccessAction),
+      switchMap(() => {
+        return of(getTodosAction());
+      }),
+    ),
+  );
+
   constructor(
     private action$: Actions,
     private todoService: TodoService,
-    private store: Store<AppStateInterface>,
   ) {}
 }
