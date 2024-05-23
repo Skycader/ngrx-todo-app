@@ -6,8 +6,8 @@ import { TodoLayoutComponent } from './layouts/todo-layout/todo-layout.component
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './store/todo.reducer';
-import { TodoEffect } from './store/effects/get-todos.effect';
 import { EffectsModule } from '@ngrx/effects';
+import { TodoEffect } from './store/effects/todos.effect';
 
 @NgModule({
   declarations: [TodoListComponent, TodoItemComponent, TodoLayoutComponent],

@@ -8,6 +8,11 @@ import { catchError, map, of, switchMap } from 'rxjs';
 import { TodoService } from '../../services/todo.service';
 import { TodoInterface } from '../../models/todo.model';
 import { Injectable } from '@angular/core';
+import {
+  addTodoAction,
+  addTodoFailureAction,
+  addTodoSuccessAction,
+} from '../actions/add-todo.action';
 
 @Injectable()
 export class TodoEffect {
@@ -21,6 +26,22 @@ export class TodoEffect {
           }),
           catchError(() => {
             return of(getTodosFailureAction());
+          }),
+        );
+      }),
+    ),
+  );
+
+  addTodos$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(addTodoAction),
+      switchMap(({ todo }) => {
+        return this.todoService.addTodo(todo).pipe(
+          map(() => {
+            return addTodoSuccessAction();
+          }),
+          catchError(() => {
+            return of(addTodoFailureAction());
           }),
         );
       }),
