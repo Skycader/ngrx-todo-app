@@ -9,11 +9,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TodoModule } from './todo/todo.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    TodoModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
@@ -32,4 +34,4 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

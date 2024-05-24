@@ -1,4 +1,3 @@
-<p>todo-list works!</p>
-<button (click)="addSimpleTodo()">Add todo</button>
-
-<pre>{{ todos$ | async | json }}</pre>
+<div class="todo-list">
+  <app-todo-item *ngFor="let todo of todos$ | async" />
+</div>

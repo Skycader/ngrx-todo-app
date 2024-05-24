@@ -8,14 +8,27 @@ import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './store/todo.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { TodoEffect } from './store/effects/todos.effect';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { MaterialModule } from '../material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [TodoListComponent, TodoItemComponent, TodoLayoutComponent],
+  declarations: [
+    TodoListComponent,
+    TodoItemComponent,
+    TodoLayoutComponent,
+    NavbarComponent,
+    SideNavComponent,
+  ],
   imports: [
     CommonModule,
+    HttpClientModule,
+    MaterialModule,
     StoreModule.forFeature('todo', todoReducer),
     EffectsModule.forFeature([TodoEffect]),
     RouterModule.forChild([{ path: '', component: TodoLayoutComponent }]),
   ],
+  exports: [NavbarComponent, SideNavComponent],
 })
-export class TodoModule {}
+export class TodoModule { }
