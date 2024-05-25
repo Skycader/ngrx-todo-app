@@ -4,7 +4,7 @@ import {
   getTodosFailureAction,
   getTodosSuccessAction,
 } from '../actions/get-todos.action';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { TodoService } from '../../services/todo.service';
 import { TodoInterface } from '../../models/todo.model';
 import { Injectable } from '@angular/core';

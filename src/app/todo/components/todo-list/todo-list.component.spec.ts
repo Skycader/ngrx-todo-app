@@ -47,7 +47,7 @@ describe('TodoListComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should add a todo `Walk the dogs`', (done) => {
+  it('should add a todo `Walk the dogs`', (done) => {
     /** Firstly, we gather our properties */
     const addTodoBtn = fixture.debugElement.query(By.css('#add-todo-btn'));
     const todoList = fixture.debugElement.query(By.css('.todo-list'));
@@ -73,39 +73,6 @@ describe('TodoListComponent', () => {
           .textContent,
       ).toBe(todoTitle);
 
-      done();
-    });
-  });
-
-  xit('should check the todo `Walk the dogs`', (done) => {
-    /** Firstly, we gather our properties */
-    const todoList = fixture.debugElement.query(By.css('.todo-list'));
-
-    /** Secondly */
-    todoService.clearTodos().subscribe(() => {
-      let todo = new Todo();
-      todo.title = `Walk the dogs`;
-      store.dispatch(addTodoAction({ todo }));
-    });
-
-    todoEffect.addTodo$.subscribe(() => {
-      console.log('addTodo$');
-      fixture.detectChanges();
-      const checkTodoBtn = fixture.debugElement.query(
-        By.css('#check-todo-btn'),
-      );
-
-      checkTodoBtn.nativeElement.click();
-      fixture.detectChanges();
-    });
-
-    todoEffect.checkTodo$.subscribe(() => {
-      console.log('checkTodo$');
-      fixture.detectChanges();
-
-      expect(
-        todoList.children[0].nativeElement.children[0].classList,
-      ).toContain('mat-primary');
       done();
     });
   });
