@@ -15,6 +15,7 @@ import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../models/todo.class';
 import { AppStateInterface } from '../../../models/app-state.model';
 import { addTodoAction } from '../../store/actions/add-todo.action';
+import { checkTodoAction } from '../../store/actions/check-todo.action';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
@@ -73,6 +74,22 @@ describe('TodoListComponent', () => {
           .textContent,
       ).toBe(todoTitle);
 
+      done();
+    });
+  });
+
+  it('should check the todo `Walk the dogs`', (done) => {
+    todoService.clearTodos().subscribe(() => {
+      let todo = new Todo();
+      todo.title = `Walk the dogs`;
+      store.dispatch(addTodoAction({ todo }));
+      store.dispatch(checkTodoAction({ todoId: 0 }));
+    });
+
+    todoEffect.refreshAction$.subscribe(() => {
+      fixture.detectChanges();
+      const doneTodo = fixture.debugElement.query(By.css('.done'));
+      expect(doneTodo).toBeTruthy();
       done();
     });
   });

@@ -1,4 +1,7 @@
-<mat-toolbar [color]="todo.done === 1 ? 'primary' : 'secondary'">
+<mat-toolbar
+  [class.done]="todo.done === 1"
+  [color]="todo.done === 1 ? 'primary' : 'secondary'"
+>
   <button
     mat-icon-button
     class="example-icon"
