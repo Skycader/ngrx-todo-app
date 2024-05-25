@@ -16,4 +16,8 @@ export class TodoService {
   public addTodo(todo: TodoInterface): Observable<number> {
     return from(db.todo.add(todo));
   }
+
+  public removeTodo(todoId: number) {
+    return from(db.todo.where({ id: todoId }).delete());
+  }
 }

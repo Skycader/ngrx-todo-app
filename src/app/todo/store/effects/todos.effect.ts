@@ -13,6 +13,11 @@ import {
   addTodoFailureAction,
   addTodoSuccessAction,
 } from '../actions/add-todo.action';
+import {
+  removeTodoAction,
+  removeTodoFailureAction,
+  removeTodoSuccessAction,
+} from '../actions/remove-todo.action';
 
 @Injectable()
 export class TodoEffect {
@@ -37,7 +42,7 @@ export class TodoEffect {
     ),
   );
 
-  addTodos$ = createEffect(() =>
+  addTodo$ = createEffect(() =>
     this.action$.pipe(
       ofType(addTodoAction),
       switchMap(({ todo }) => {
@@ -55,9 +60,25 @@ export class TodoEffect {
 
   refreshAction$ = createEffect(() =>
     this.action$.pipe(
-      ofType(addTodoSuccessAction),
+      ofType(addTodoSuccessAction, removeTodoSuccessAction),
       switchMap(() => {
         return of(getTodosAction());
+      }),
+    ),
+  );
+
+  removeTodo$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(removeTodoAction),
+      switchMap(({ todoId }) => {
+        return this.todoService.removeTodo(todoId).pipe(
+          map(() => {
+            return removeTodoSuccessAction();
+          }),
+          catchError(() => {
+            return of(removeTodoFailureAction());
+          }),
+        );
       }),
     ),
   );
@@ -65,5 +86,5 @@ export class TodoEffect {
   constructor(
     private action$: Actions,
     private todoService: TodoService,
-  ) {}
+  ) { }
 }
