@@ -64,6 +64,7 @@ describe('TodoListComponent', () => {
 
     todoService.clearTodos().subscribe(() => {
       todoTitleValue.nativeElement.value = 'Walk the dogs';
+      todoTitleValue.nativeElement.dispatchEvent(new Event('input'));
       addTodoBtn.nativeElement.click();
       fixture.detectChanges();
     });
