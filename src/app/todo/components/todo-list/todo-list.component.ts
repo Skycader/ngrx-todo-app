@@ -29,43 +29,4 @@ export class TodoListComponent {
   addTodo(todo: TodoInterface) {
     this.store.dispatch(addTodoAction({ todo }));
   }
-
-  public addSimpleTodo() {
-    const title = 'xxx';
-    this.addTodo({
-      id: Date.now(),
-      title: title || '',
-      description: 'OK',
-      deadline: 101,
-      done: false,
-    });
-  }
-
-  todo = ['Get to work'];
-
-  done: string[] = [];
-
-  dragging = false;
-
-  emit(value: any) {
-    console.log(value);
-    this.dragging = value;
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-  }
 }

@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NewTodoComponent } from './components/new-todo/new-todo.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     TodoLayoutComponent,
     NavbarComponent,
     SideNavComponent,
+    NewTodoComponent,
   ],
   imports: [
     CommonModule,
@@ -31,4 +33,4 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [NavbarComponent, SideNavComponent],
 })
-export class TodoModule { }
+export class TodoModule {}

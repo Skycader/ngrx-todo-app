@@ -1,42 +1,10 @@
 <div class="todo-list">
   <h2><mat-icon>label</mat-icon> Add todo</h2>
+  <app-new-todo />
 
-  {{ dragging }}
-  <div
-    cdkDropList
-    class="example-list bg-body"
-    #todoList="cdkDropList"
-    [cdkDropListData]="todo"
-    [cdkDropListConnectedTo]="[doneList]"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <app-todo-item
-      class="example-box"
-      *ngFor="let item of todo"
-      cdkDrag
-      (cdkDragStarted)="emit(true)"
-      (cdkDragEnded)="emit(false)"
-    />
-  </div>
-
-  <h2><mat-icon>access_time</mat-icon> Just one day before deadline</h2>
+  <h2>
+    <mat-icon matTooltip="Sorting by deadline">access_time</mat-icon> My todos
+  </h2>
   <hr />
-
-  <div
-    #doneList="cdkDropList"
-    class="example-list bg-body"
-    cdkDropList
-    [cdkDropListConnectedTo]="[todoList]"
-    [cdkDropListData]="done"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <app-todo-item class="example-box" *ngFor="let item of done" cdkDrag />
-  </div>
-
   <app-todo-item *ngFor="let todo of todos$ | async" />
-
-  <!---->
-  <!-- <h2><mat-icon>access_time</mat-icon> One week before deadline</h2> -->
-  <!-- <hr /> -->
-  <!-- <app-todo-item *ngFor="let todo of todos$ | async" /> -->
 </div>
