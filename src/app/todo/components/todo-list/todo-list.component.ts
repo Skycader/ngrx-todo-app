@@ -46,25 +46,20 @@ export class TodoListComponent {
   done: string[] = [];
 
   dragging = false;
-  hideGenerator = false;
+
+  emit(value: any) {
+    console.log(value);
+    this.dragging = value;
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      this.hideGenerator = false;
-
       moveItemInArray(
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
     } else {
-      this.addSimpleTodo();
-      this.todo = ['new'];
-      this.done = [];
-      setTimeout(() => {
-        this.hideGenerator = false;
-      }, 400);
-
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

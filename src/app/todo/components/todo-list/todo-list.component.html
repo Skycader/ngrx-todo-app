@@ -1,10 +1,10 @@
 <div class="todo-list">
   <h2><mat-icon>label</mat-icon> Add todo</h2>
 
+  {{ dragging }}
   <div
     cdkDropList
     class="example-list bg-body"
-    [class.hidden]="hideGenerator"
     #todoList="cdkDropList"
     [cdkDropListData]="todo"
     [cdkDropListConnectedTo]="[doneList]"
@@ -14,8 +14,8 @@
       class="example-box"
       *ngFor="let item of todo"
       cdkDrag
-      (touchstart)="dragging = true; hideGenerator = true"
-      (touchend)="dragging = false"
+      (cdkDragStarted)="emit(true)"
+      (cdkDragEnded)="emit(false)"
     />
   </div>
 
@@ -24,8 +24,7 @@
 
   <div
     #doneList="cdkDropList"
-    class="bg-body"
-    [class.example-list]="dragging"
+    class="example-list bg-body"
     cdkDropList
     [cdkDropListConnectedTo]="[todoList]"
     [cdkDropListData]="done"
