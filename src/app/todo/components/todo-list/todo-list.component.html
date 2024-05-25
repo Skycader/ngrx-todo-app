@@ -4,12 +4,19 @@
   <div
     cdkDropList
     class="example-list bg-body"
+    [class.hidden]="hideGenerator"
     #todoList="cdkDropList"
     [cdkDropListData]="todo"
     [cdkDropListConnectedTo]="[doneList]"
     (cdkDropListDropped)="drop($event)"
   >
-    <app-todo-item class="example-box" *ngFor="let item of todo" cdkDrag />
+    <app-todo-item
+      class="example-box"
+      *ngFor="let item of todo"
+      cdkDrag
+      (touchstart)="dragging = true; hideGenerator = true"
+      (touchend)="dragging = false"
+    />
   </div>
 
   <h2><mat-icon>access_time</mat-icon> Just one day before deadline</h2>
@@ -17,7 +24,8 @@
 
   <div
     #doneList="cdkDropList"
-    class="example-list bg-body"
+    class="bg-body"
+    [class.example-list]="dragging"
     cdkDropList
     [cdkDropListConnectedTo]="[todoList]"
     [cdkDropListData]="done"
@@ -25,7 +33,11 @@
   >
     <app-todo-item class="example-box" *ngFor="let item of done" cdkDrag />
   </div>
-  <h2><mat-icon>access_time</mat-icon> One week before deadline</h2>
-  <hr />
+
   <app-todo-item *ngFor="let todo of todos$ | async" />
+
+  <!---->
+  <!-- <h2><mat-icon>access_time</mat-icon> One week before deadline</h2> -->
+  <!-- <hr /> -->
+  <!-- <app-todo-item *ngFor="let todo of todos$ | async" /> -->
 </div>

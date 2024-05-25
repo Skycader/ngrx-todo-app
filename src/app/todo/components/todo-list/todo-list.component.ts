@@ -31,7 +31,7 @@ export class TodoListComponent {
   }
 
   public addSimpleTodo() {
-    const title = prompt('title: ');
+    const title = 'xxx';
     this.addTodo({
       id: Date.now(),
       title: title || '',
@@ -43,16 +43,28 @@ export class TodoListComponent {
 
   todo = ['Get to work'];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  done: string[] = [];
+
+  dragging = false;
+  hideGenerator = false;
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
+      this.hideGenerator = false;
+
       moveItemInArray(
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
     } else {
+      this.addSimpleTodo();
+      this.todo = ['new'];
+      this.done = [];
+      setTimeout(() => {
+        this.hideGenerator = false;
+      }, 400);
+
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
