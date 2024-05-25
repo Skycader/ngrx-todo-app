@@ -5,5 +5,5 @@ export class Todo implements TodoInterface {
   title = '';
   description = '';
   deadline = 0;
-  done = false;
+  done = 0;
 }

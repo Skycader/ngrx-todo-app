@@ -20,7 +20,7 @@ export class NewTodoComponent {
       title: this.todoTitle,
       description: '',
       deadline: Date.now() + 1000,
-      done: false,
+      done: 0,
     };
     this.store.dispatch(addTodoAction({ todo }));
 

@@ -18,6 +18,16 @@ import {
   removeTodoFailureAction,
   removeTodoSuccessAction,
 } from '../actions/remove-todo.action';
+import {
+  checkTodoAction,
+  checkTodoFailureAction,
+  checkTodoSuccessAction,
+} from '../actions/check-todo.action';
+import {
+  uncheckTodoAction,
+  uncheckTodoFailureAction,
+  uncheckTodoSuccessAction,
+} from '../actions/uncheck-todo.action';
 
 @Injectable()
 export class TodoEffect {
@@ -60,9 +70,46 @@ export class TodoEffect {
 
   refreshAction$ = createEffect(() =>
     this.action$.pipe(
-      ofType(addTodoSuccessAction, removeTodoSuccessAction),
+      ofType(
+        addTodoSuccessAction,
+        checkTodoSuccessAction,
+        uncheckTodoSuccessAction,
+        removeTodoSuccessAction,
+      ),
       switchMap(() => {
         return of(getTodosAction());
+      }),
+    ),
+  );
+
+  checkTodo$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(checkTodoAction),
+      switchMap(({ todoId }) => {
+        return this.todoService.checkTodo(todoId).pipe(
+          map(() => {
+            return checkTodoSuccessAction();
+          }),
+          catchError(() => {
+            return of(checkTodoFailureAction());
+          }),
+        );
+      }),
+    ),
+  );
+
+  uncheckTodo$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(uncheckTodoAction),
+      switchMap(({ todoId }) => {
+        return this.todoService.uncheckTodo(todoId).pipe(
+          map(() => {
+            return uncheckTodoSuccessAction();
+          }),
+          catchError(() => {
+            return of(uncheckTodoFailureAction());
+          }),
+        );
       }),
     ),
   );

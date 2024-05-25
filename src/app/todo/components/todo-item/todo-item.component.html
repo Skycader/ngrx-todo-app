@@ -1,20 +1,36 @@
-<mat-toolbar color="secondary">
+<mat-toolbar [color]="todo.done === 1 ? 'primary' : 'secondary'">
   <button
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
   >
-    <mat-icon>edit</mat-icon>
+    <mat-icon>notes</mat-icon>
   </button>
   <span>{{ todo.title }}</span>
   <span class="example-spacer"></span>
+
+  <!-- Check the todo  -->
   <button
+    *ngIf="todo.done === 0"
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
+    (click)="checkTodo(todo.id)"
   >
     <mat-icon>done</mat-icon>
   </button>
+
+  <!-- Uncheck the todo -->
+  <button
+    *ngIf="todo.done === 1"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    (click)="uncheckTodo(todo.id)"
+  >
+    <mat-icon>undone</mat-icon>
+  </button>
+
   <button
     mat-icon-button
     class="example-icon"

@@ -7,6 +7,14 @@ export enum ActionTypes {
   ADD_TODO_SUCCESS = '[TODO] Add todo success',
   ADD_TODO_FAILURE = '[TODO] Add todo failure',
 
+  CHECK_TODO = '[TODO] Check todo',
+  CHECK_TODO_SUCCESS = '[TODO] Check todo success',
+  CHECK_TODO_FAILURE = '[TODO] Check todo failure',
+
+  UNCHECK_TODO = '[TODO] Uncheck todo',
+  UNCHECK_TODO_SUCCESS = '[TODO] Uncheck todo success',
+  UNCHECK_TODO_FAILURE = '[TODO] Uncheck todo failure',
+
   UPDATE_TODO = '[TODO] Update todo',
   UPDATE_TODO_SUCCESS = '[TODO] Update todo success',
   UPDATE_TODO_FAILURE = '[TODO] Update todo failure',
