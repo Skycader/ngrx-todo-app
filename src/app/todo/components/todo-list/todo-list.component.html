@@ -6,5 +6,5 @@
     <mat-icon matTooltip="Sorting by deadline">access_time</mat-icon> My todos
   </h2>
   <hr />
-  <app-todo-item *ngFor="let todo of todos$ | async" />
+  <app-todo-item *ngFor="let todo of todos$ | async" [todo]="todo" />
 </div>

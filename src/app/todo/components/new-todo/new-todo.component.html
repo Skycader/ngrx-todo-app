@@ -6,7 +6,7 @@
   >
     <mat-icon>edit</mat-icon>
   </button>
-  <span>New todo</span>
+  <input [(ngModel)]="todoTitle" placeholder="Todo title" />
   <span class="example-spacer"></span>
   <button
     mat-icon-button
@@ -19,6 +19,7 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with share icon"
+    (click)="addTodo()"
   >
     <mat-icon>add</mat-icon>
   </button>
