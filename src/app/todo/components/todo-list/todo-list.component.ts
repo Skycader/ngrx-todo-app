@@ -6,6 +6,12 @@ import { TodoInterface } from '../../models/todo.model';
 import { addTodoAction } from '../../store/actions/add-todo.action';
 import { todosSelector } from '../../store/todo.selector';
 
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -33,5 +39,26 @@ export class TodoListComponent {
       deadline: 101,
       done: false,
     });
+  }
+
+  todo = ['Get to work'];
+
+  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 }

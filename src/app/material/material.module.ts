@@ -23,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -51,7 +52,7 @@ const MaterialComponents = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
-  exports: [...MaterialComponents],
+  imports: [CommonModule, DragDropModule],
+  exports: [...MaterialComponents, DragDropModule],
 })
 export class MaterialModule { }
