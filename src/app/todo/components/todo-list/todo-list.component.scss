@@ -27,7 +27,9 @@ h2 {
   background: white;
   border-radius: 4px;
   overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .example-box {
