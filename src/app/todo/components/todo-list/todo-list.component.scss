@@ -1,10 +1,13 @@
-.todo-list {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
+.todo-layout {
   padding: 10px;
   max-width: 1000px;
   margin: 0 auto;
+
+  .todo-list {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
 }
 
 h2 {

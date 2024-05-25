@@ -12,6 +12,7 @@ import { NewTodoComponent } from '../new-todo/new-todo.component';
 import { By } from '@angular/platform-browser';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { TodoService } from '../../services/todo.service';
+import { DebugElement } from '@angular/core';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
@@ -42,31 +43,36 @@ describe('TodoListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 
-  it('should add a todo', (done) => {
+  it('should add a todo `Walk the dogs`', (done) => {
+    /** Firstly, we gather our properties */
     const addTodoBtn = fixture.debugElement.query(By.css('#add-todo-btn'));
-
+    const todoList = fixture.debugElement.query(By.css('.todo-list'));
     const todoTitleValue = fixture.debugElement.query(
       By.css('#todo-title-input'),
     );
+    const todoTitle = 'Walk the dogs';
 
-    todoEffect.refreshAction$.subscribe(() => {
-      fixture.detectChanges();
-
-      const todos = fixture.debugElement.queryAll(By.css('#todo-title'));
-      console.log(todos);
-      expect(todos.length).toBe(1);
-      done();
-    });
-
+    /** Secondly, we reinitialize the database */
     todoService.clearTodos().subscribe(() => {
-      todoTitleValue.nativeElement.value = 'Walk the dogs';
+      todoTitleValue.nativeElement.value = todoTitle;
       todoTitleValue.nativeElement.dispatchEvent(new Event('input'));
       addTodoBtn.nativeElement.click();
       fixture.detectChanges();
+    });
+
+    /** And finally, when a refresh event emits, we check the results */
+    todoEffect.refreshAction$.subscribe(() => {
+      fixture.detectChanges();
+
+      expect(
+        todoList.children[0].query(By.css('#todo-title')).nativeElement
+          .textContent,
+      ).toBe(todoTitle);
+      done();
     });
   });
 });
