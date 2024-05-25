@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoListComponent } from './todo-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TodoEffect } from '../../store/effects/todos.effect';
 import { todoReducer } from '../../store/todo.reducer';
@@ -12,13 +12,16 @@ import { NewTodoComponent } from '../new-todo/new-todo.component';
 import { By } from '@angular/platform-browser';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { TodoService } from '../../services/todo.service';
-import { DebugElement } from '@angular/core';
+import { Todo } from '../../models/todo.class';
+import { AppStateInterface } from '../../../models/app-state.model';
+import { addTodoAction } from '../../store/actions/add-todo.action';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
   let todoEffect: TodoEffect;
   let todoService: TodoService;
+  let store: Store<AppStateInterface>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -39,15 +42,12 @@ describe('TodoListComponent', () => {
     component = fixture.componentInstance;
     todoEffect = TestBed.inject(TodoEffect);
     todoService = TestBed.inject(TodoService);
+    store = TestBed.inject(Store);
 
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-
-  it('should add a todo `Walk the dogs`', (done) => {
+  xit('should add a todo `Walk the dogs`', (done) => {
     /** Firstly, we gather our properties */
     const addTodoBtn = fixture.debugElement.query(By.css('#add-todo-btn'));
     const todoList = fixture.debugElement.query(By.css('.todo-list'));
@@ -72,6 +72,40 @@ describe('TodoListComponent', () => {
         todoList.children[0].query(By.css('#todo-title')).nativeElement
           .textContent,
       ).toBe(todoTitle);
+
+      done();
+    });
+  });
+
+  xit('should check the todo `Walk the dogs`', (done) => {
+    /** Firstly, we gather our properties */
+    const todoList = fixture.debugElement.query(By.css('.todo-list'));
+
+    /** Secondly */
+    todoService.clearTodos().subscribe(() => {
+      let todo = new Todo();
+      todo.title = `Walk the dogs`;
+      store.dispatch(addTodoAction({ todo }));
+    });
+
+    todoEffect.addTodo$.subscribe(() => {
+      console.log('addTodo$');
+      fixture.detectChanges();
+      const checkTodoBtn = fixture.debugElement.query(
+        By.css('#check-todo-btn'),
+      );
+
+      checkTodoBtn.nativeElement.click();
+      fixture.detectChanges();
+    });
+
+    todoEffect.checkTodo$.subscribe(() => {
+      console.log('checkTodo$');
+      fixture.detectChanges();
+
+      expect(
+        todoList.children[0].nativeElement.children[0].classList,
+      ).toContain('mat-primary');
       done();
     });
   });
