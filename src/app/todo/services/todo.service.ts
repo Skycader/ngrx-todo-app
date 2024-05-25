@@ -28,4 +28,8 @@ export class TodoService {
   public removeTodo(todoId: number) {
     return from(db.todo.where({ id: todoId }).delete());
   }
+
+  public clearTodos() {
+    return from(db.todo.clear());
+  }
 }

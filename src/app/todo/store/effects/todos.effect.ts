@@ -36,7 +36,8 @@ export class TodoEffect {
    * addTodo => getTodo
    *
    */
-  getTodos$ = createEffect(() =>
+
+  public getTodos$ = createEffect(() =>
     this.action$.pipe(
       ofType(getTodosAction),
       switchMap(() => {
@@ -52,7 +53,7 @@ export class TodoEffect {
     ),
   );
 
-  addTodo$ = createEffect(() =>
+  public addTodo$ = createEffect(() =>
     this.action$.pipe(
       ofType(addTodoAction),
       switchMap(({ todo }) => {
@@ -68,7 +69,7 @@ export class TodoEffect {
     ),
   );
 
-  refreshAction$ = createEffect(() =>
+  public refreshAction$ = createEffect(() =>
     this.action$.pipe(
       ofType(
         addTodoSuccessAction,
@@ -82,7 +83,7 @@ export class TodoEffect {
     ),
   );
 
-  checkTodo$ = createEffect(() =>
+  public checkTodo$ = createEffect(() =>
     this.action$.pipe(
       ofType(checkTodoAction),
       switchMap(({ todoId }) => {
@@ -98,7 +99,7 @@ export class TodoEffect {
     ),
   );
 
-  uncheckTodo$ = createEffect(() =>
+  public uncheckTodo$ = createEffect(() =>
     this.action$.pipe(
       ofType(uncheckTodoAction),
       switchMap(({ todoId }) => {
@@ -114,7 +115,7 @@ export class TodoEffect {
     ),
   );
 
-  removeTodo$ = createEffect(() =>
+  public removeTodo$ = createEffect(() =>
     this.action$.pipe(
       ofType(removeTodoAction),
       switchMap(({ todoId }) => {
