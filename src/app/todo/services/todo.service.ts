@@ -14,6 +14,7 @@ export class TodoService {
   }
 
   public addTodo(todo: TodoInterface): Observable<number> {
+    console.log('adding todo', todo);
     return from(db.todo.add(todo));
   }
 

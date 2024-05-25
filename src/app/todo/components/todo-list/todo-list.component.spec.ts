@@ -16,6 +16,7 @@ import { Todo } from '../../models/todo.class';
 import { AppStateInterface } from '../../../models/app-state.model';
 import { addTodoAction } from '../../store/actions/add-todo.action';
 import { checkTodoAction } from '../../store/actions/check-todo.action';
+import { Subject } from 'rxjs';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
@@ -25,6 +26,8 @@ describe('TodoListComponent', () => {
   let store: Store<AppStateInterface>;
 
   beforeEach(async () => {
+    console.log('before');
+
     await TestBed.configureTestingModule({
       declarations: [TodoListComponent, NewTodoComponent, TodoItemComponent],
       imports: [
@@ -48,6 +51,10 @@ describe('TodoListComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach((res) => {
+    console.log('after');
+  });
+
   it('should add a todo `Walk the dogs`', (done) => {
     /** Firstly, we gather our properties */
     const addTodoBtn = fixture.debugElement.query(By.css('#add-todo-btn'));
@@ -59,6 +66,7 @@ describe('TodoListComponent', () => {
 
     /** Secondly, we reinitialize the database */
     todoService.clearTodos().subscribe(() => {
+      console.log('init `walk the dogs`');
       todoTitleValue.nativeElement.value = todoTitle;
       todoTitleValue.nativeElement.dispatchEvent(new Event('input'));
       addTodoBtn.nativeElement.click();
@@ -68,7 +76,12 @@ describe('TodoListComponent', () => {
     /** And finally, when a refresh event emits, we check the results */
     todoEffect.refreshAction$.subscribe(() => {
       fixture.detectChanges();
-
+      console.log(
+        'expect `walk the dogs`',
+        todoList.children[0].query(By.css('#todo-title')).nativeElement
+          .textContent,
+        todoTitle,
+      );
       expect(
         todoList.children[0].query(By.css('#todo-title')).nativeElement
           .textContent,
@@ -78,17 +91,22 @@ describe('TodoListComponent', () => {
     });
   });
 
-  it('should check the todo `Walk the dogs`', (done) => {
+  it('should check the todo `Feed the cat`', (done) => {
     todoService.clearTodos().subscribe(() => {
       let todo = new Todo();
-      todo.title = `Walk the dogs`;
-      store.dispatch(addTodoAction({ todo }));
-      store.dispatch(checkTodoAction({ todoId: 0 }));
+      todo.title = `Feed the cat`;
+
+      console.log('Init `feed the cat`');
+      todoService.addTodo(todo).subscribe(() => {
+        store.dispatch(checkTodoAction({ todoId: 0 }));
+      });
     });
 
     todoEffect.refreshAction$.subscribe(() => {
       fixture.detectChanges();
       const doneTodo = fixture.debugElement.query(By.css('.done'));
+      console.log('expect `feed the cat`', doneTodo);
+
       expect(doneTodo).toBeTruthy();
       done();
     });
