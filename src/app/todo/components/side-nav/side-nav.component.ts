@@ -33,38 +33,17 @@ export class SideNavComponent {
     {
       topic: [
         {
-          name: 'Основная',
+          name: 'Backup',
         },
       ],
       articles: [
         {
-          name: 'О нас',
+          name: 'Import database',
           route: 'about',
         },
         {
-          name: 'Наши цены',
+          name: 'Export database',
           route: 'price-list',
-        },
-      ],
-    },
-    {
-      topic: [
-        {
-          name: 'Популярные услуги',
-        },
-      ],
-      articles: [
-        {
-          name: 'Мощение дорожек и площадок',
-          route: 'moshchenie-dorozhek',
-        },
-        {
-          name: 'Дренаж и система водоотведения',
-          route: 'drenazh-i-sistema-vodootvedeniya',
-        },
-        {
-          name: 'Система полива участка',
-          route: 'drenazh-i-sistema-vodootvedeniya',
         },
       ],
     },
