@@ -12,7 +12,7 @@ import { TodoInterface } from '../../models/todo.model';
 export class NewTodoComponent {
   public todoTitle = '';
 
-  constructor(private store: Store<AppStateInterface>) { }
+  constructor(private store: Store<AppStateInterface>) {}
 
   public addTodo(): void {
     let todo: TodoInterface = {

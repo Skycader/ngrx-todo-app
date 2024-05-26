@@ -20,7 +20,7 @@ import {
 export class TodoListComponent {
   public todos$ = this.store.pipe(select(todosSelector));
 
-  constructor(private store: Store<AppStateInterface>) { }
+  constructor(private store: Store<AppStateInterface>) {}
 
   ngOnInit(): void {
     this.store.dispatch(getTodosAction());

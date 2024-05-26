@@ -8,7 +8,7 @@ import { Todo } from '../database/todo.entity';
   providedIn: 'root',
 })
 export class TodoService {
-  constructor() { }
+  constructor() {}
 
   public getTodos(): Observable<TodoInterface[]> {
     return from(db.todo.orderBy(Todo.id).toArray());
