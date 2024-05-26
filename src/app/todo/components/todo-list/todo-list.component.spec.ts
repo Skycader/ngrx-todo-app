@@ -68,7 +68,6 @@ describe('TodoListComponent', () => {
 
     /** And finally, when a refresh event emits, we check the results */
     todoEffect.refreshAction$.subscribe(() => {
-      fixture.detectChanges();
       expect(
         todoList.children[0].query(By.css('#todo-title')).nativeElement
           .textContent,
