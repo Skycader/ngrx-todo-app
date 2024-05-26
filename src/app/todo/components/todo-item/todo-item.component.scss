@@ -4,3 +4,10 @@ mat-toolbar {
 .example-spacer {
   flex: 1 1 auto;
 }
+
+#todo-title {
+  display: block;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+}
