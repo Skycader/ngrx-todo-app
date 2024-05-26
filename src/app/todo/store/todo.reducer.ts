@@ -8,13 +8,13 @@ export const initialState: TodoStateInterface = {
 
 const reducer = createReducer(
   initialState,
-  on(getTodosSuccessAction, (state, action): TodoStateInterface => {
-    console.log('NGRX IS GETTING TODOS', action.todos);
-    return {
+  on(
+    getTodosSuccessAction,
+    (state, action): TodoStateInterface => ({
       ...state,
       todos: action.todos,
-    };
-  }),
+    }),
+  ),
 );
 
 export function todoReducer(state: TodoStateInterface, action: Action) {
