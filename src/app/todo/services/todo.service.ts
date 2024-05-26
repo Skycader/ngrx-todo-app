@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TodoInterface } from '../models/todo.model';
 import { Observable, from, of } from 'rxjs';
 import { db } from '../database/db';
+import { Todo } from '../database/todo.entity';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +11,10 @@ export class TodoService {
   constructor() { }
 
   public getTodos(): Observable<TodoInterface[]> {
-    return from(db.todo.orderBy('id').toArray());
+    return from(db.todo.orderBy(Todo.id).toArray());
   }
 
   public addTodo(todo: TodoInterface): Observable<number> {
-    console.log('adding todo', todo);
     return from(db.todo.add(todo));
   }
 

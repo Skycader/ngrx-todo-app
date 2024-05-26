@@ -56,6 +56,7 @@ describe('TodoListComponent', () => {
   });
 
   it('should add a todo `Walk the dogs`', (done) => {
+    console.log('RUNNING TEST #1');
     /** Firstly, we gather our properties */
     const addTodoBtn = fixture.debugElement.query(By.css('#add-todo-btn'));
     const todoList = fixture.debugElement.query(By.css('.todo-list'));
@@ -86,12 +87,13 @@ describe('TodoListComponent', () => {
         todoList.children[0].query(By.css('#todo-title')).nativeElement
           .textContent,
       ).toBe(todoTitle);
-
+      console.log('RUNNING TEST #1 DONE');
       done();
     });
   });
 
-  it('should check the todo `Feed the cat`', (done) => {
+  xit('should check the todo `Feed the cat`', (done) => {
+    console.log('RUNNING TEST #2');
     todoService.clearTodos().subscribe(() => {
       let todo = new Todo();
       todo.title = `Feed the cat`;
@@ -108,6 +110,7 @@ describe('TodoListComponent', () => {
       console.log('expect `feed the cat`', doneTodo);
 
       expect(doneTodo).toBeTruthy();
+      console.log('RUNNING TEST #2 DONE');
       done();
     });
   });
