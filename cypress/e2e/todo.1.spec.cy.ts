@@ -7,9 +7,11 @@ it('should add, check and remove todo gracefully', () => {
   cy.get('#add-todo-btn').click();
   cy.get('.todo-list').should('contain.text', 'Walk the dogs');
 
+  //2. Check the todo
   cy.get('#check-todo-btn').click();
   cy.get('.todo-item').should('have.class', 'mat-primary');
 
+  //3. Remove the todo
   cy.get('#delete-todo-btn').click();
   cy.get('.todo-list').should('not.contain.text', 'Walk the dogs');
 });
