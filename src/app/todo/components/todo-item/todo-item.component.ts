@@ -14,6 +14,28 @@ import { uncheckTodoAction } from '../../store/actions/uncheck-todo.action';
 })
 export class TodoItemComponent {
   @Input() todo: TodoInterface = new Todo();
+  public get currentTime() {
+    return Date.now();
+  }
+  public get daysLeft() {
+    const daysLeft = Math.floor(
+      (this.todo.deadline - Date.now()) / 1000 / 60 / 60 / 24,
+    );
+
+    const hours = Math.floor(
+      (this.todo.deadline - Date.now()) / 1000 / 60 / 60,
+    );
+
+    if (daysLeft === 0) {
+      return hours + ' hours left';
+    }
+
+    if (daysLeft < 0) {
+      return `Todo is overdue for ${Math.abs(daysLeft)} days`;
+    }
+
+    return daysLeft + ' days left';
+  }
 
   constructor(private store: Store<AppStateInterface>) { }
 

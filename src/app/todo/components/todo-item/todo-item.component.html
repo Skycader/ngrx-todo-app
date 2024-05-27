@@ -1,10 +1,17 @@
 <mat-toolbar
   class="todo-item"
   [class.done]="todo.done === 1"
-  [color]="todo.done === 1 ? 'primary' : 'secondary'"
+  [color]="
+    todo.done === 1
+      ? 'primary'
+      : todo.deadline < currentTime
+        ? 'warn'
+        : 'secondary'
+  "
 >
   <button
     mat-icon-button
+    [matTooltip]="daysLeft"
     class="example-icon"
     aria-label="Example icon-button with menu icon"
   >
