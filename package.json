@@ -9,7 +9,10 @@
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:e2e": "yarn start && cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "e2e": "concurrently \"npm run start\" \"wait-on http-get://localhost:4200 && npm run cy:run\" --kill-others --success first",
+    "e2e-gui": "concurrently \"npm run start\" \"wait-on http-get://localhost:4200 && npm run cy:open\" --kill-others --success first"
   },
   "private": true,
   "dependencies": {
@@ -28,9 +31,11 @@
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
     "bootstrap": "^5.3.3",
+    "concurrently": "^8.2.2",
     "dexie": "^4.0.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "wait-on": "^7.2.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
