@@ -2,21 +2,20 @@
   "name": "ngrx-todo-app",
   "version": "0.0.0",
   "scripts": {
-    "s": "yarn ntl -s 20 -A --exclude cy:open cy:run upload build s",
+    "start": "yarn ntl -s 20 -A --exclude cy:open cy:run upload build start",
     "build": "ng build --base-href https://skycader.github.io/ngrx-todo-app/",
     "upload": "npx angular-cli-ghpages --dir=dist/ngrx-todo-app/browser",
     "deploy": "yarn build && yarn upload",
-    "start": "ng serve",
+    "serve": "ng serve",
     "test": "ng test",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "e2e": "concurrently \"npm run start\" \"wait-on http-get://localhost:4200 && npm run cy:run\" --kill-others --success first",
-    "e2e-gui": "concurrently \"npm run start\" \"wait-on http-get://localhost:4200 && npm run cy:open\" --kill-others --success first"
+    "e2e": "concurrently \"npm run serve\" \"wait-on http-get://localhost:4200 && npm run cy:run\" --kill-others --success first",
+    "e2e-gui": "concurrently \"npm run serve\" \"wait-on http-get://localhost:4200 && npm run cy:open\" --kill-others --success first"
   },
   "ntl": {
     "descriptions": {
-      "s": "show this menu",
-      "start": "start dev server on http://localhost:4200",
+      "serve": "start dev server on http://localhost:4200",
       "test": "Run project's tests with coverage",
       "e2e": "Run all e2e tests in background",
       "e2e-gui": "Open cypress and run tests visually",
