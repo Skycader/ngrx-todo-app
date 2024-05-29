@@ -11,14 +11,14 @@ describe('Full todo lifecycle checkout', () => {
     cy.visit('http://localhost:4200');
 
     cy.get('#check-todo-btn').click();
-    cy.get('.todo-item').should('have.class', 'mat-primary');
+    cy.get('.todo-item').should('have.class', 'done');
   });
 
   it('should uncheck the created todo', () => {
     cy.visit('http://localhost:4200');
 
     cy.get('#uncheck-todo-btn').click();
-    cy.get('.todo-item').should('have.class', 'mat-secondary');
+    cy.get('.todo-item').should('have.class', 'undone');
   });
 
   it('should remove the checked todo', () => {

@@ -1,6 +1,6 @@
 <mat-toolbar
   class="todo-item"
-  [class.done]="todo.done === 1"
+  [class]="todo.done === 1 ? 'done' : 'undone'"
   [color]="
     todo.done === 1
       ? 'primary'
