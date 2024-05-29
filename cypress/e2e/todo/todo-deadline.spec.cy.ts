@@ -15,6 +15,10 @@ describe('Check if deadline works correctly', () => {
     cy.get('#days-left-indicator').trigger('onmouseover');
     cy.wait(500);
     cy.get('.mdc-tooltip').should('contain.text', 'days left');
+
+    cy.clock(Date.UTC(new Date().getFullYear() + 1, 6, 23), ['Date']); //let's assume it's been 1 year awaiting;
+    cy.visit('http://localhost:4200');
+    cy.get('.todo-item').first().should('have.class', 'overdue');
   });
 
   it('should add an overdue todo', () => {
