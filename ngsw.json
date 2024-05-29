@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1716845512020,
+  "timestamp": 1716941946611,
   "index": "https://skycader.github.io/ngrx-todo-app/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "https://skycader.github.io/ngrx-todo-app/chunk-GOPYNEMR.js",
         "https://skycader.github.io/ngrx-todo-app/favicon.ico",
         "https://skycader.github.io/ngrx-todo-app/index.html",
-        "https://skycader.github.io/ngrx-todo-app/main-5Q3NYD5E.js",
+        "https://skycader.github.io/ngrx-todo-app/main-M3JZ34MT.js",
         "https://skycader.github.io/ngrx-todo-app/manifest.webmanifest",
         "https://skycader.github.io/ngrx-todo-app/polyfills-A7MJM4D4.js",
         "https://skycader.github.io/ngrx-todo-app/scripts-EEEIPNC3.js",
@@ -56,8 +56,8 @@
     "https://skycader.github.io/ngrx-todo-app/chunk-6FFJVZ7N.js": "4f85663873bcec987aa98e381feda02885b0a81d",
     "https://skycader.github.io/ngrx-todo-app/chunk-GOPYNEMR.js": "fe79bb1a8fc2f3c8c95572ab181135ed84ef3d0f",
     "https://skycader.github.io/ngrx-todo-app/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "https://skycader.github.io/ngrx-todo-app/index.html": "8a45d6b8f75486ad246bc8e31184d5b54d47ba7b",
-    "https://skycader.github.io/ngrx-todo-app/main-5Q3NYD5E.js": "2b296746200a09cc589a724575f2b59f893af64e",
+    "https://skycader.github.io/ngrx-todo-app/index.html": "a8eb70ce114b0c7f97537e0bccba1adc40e02279",
+    "https://skycader.github.io/ngrx-todo-app/main-M3JZ34MT.js": "5cd3cde344bde50ec3b6167ca7060f98b6208534",
     "https://skycader.github.io/ngrx-todo-app/manifest.webmanifest": "ee484830c23cdad081a8ce23393ff13fe56901ea",
     "https://skycader.github.io/ngrx-todo-app/polyfills-A7MJM4D4.js": "547053781d5952561abe68a51cc6c1a2b1b51c55",
     "https://skycader.github.io/ngrx-todo-app/scripts-EEEIPNC3.js": "2318ded8c885787a1645385a82c1ca883c359034",
