@@ -12,7 +12,7 @@ describe('Check if deadline works correctly', () => {
     cy.get('.todo-list').should('contain.text', 'Walk the dogs');
     cy.get('.todo-item').first().should('not.have.class', 'overdue');
     cy.get('#days-left-indicator').trigger('mouseenter');
-    cy.get('#days-left-indicator').trigger('mouseover');
+    cy.get('#days-left-indicator').trigger('onmouseover');
     cy.wait(500);
     cy.get('.mdc-tooltip').should('contain.text', 'days left');
   });
