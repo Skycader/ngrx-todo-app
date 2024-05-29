@@ -1,6 +1,7 @@
 <mat-toolbar
   class="todo-item"
   [class]="todo.done === 1 ? 'done' : 'undone'"
+  [class]="todo.deadline < currentTime ? 'overdue' : 'intime'"
   [color]="
     todo.done === 1
       ? 'primary'
