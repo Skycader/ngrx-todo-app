@@ -14,6 +14,7 @@ import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { FormsModule } from '@angular/forms';
+import { WhileDirective } from './utils/directives/while.directive';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SideNavComponent,
     NewTodoComponent,
+    WhileDirective,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,6 @@ import { FormsModule } from '@angular/forms';
     EffectsModule.forFeature([TodoEffect]),
     RouterModule.forChild([{ path: '', component: TodoLayoutComponent }]),
   ],
-  exports: [NavbarComponent, SideNavComponent],
+  exports: [NavbarComponent, SideNavComponent, WhileDirective],
 })
 export class TodoModule { }
