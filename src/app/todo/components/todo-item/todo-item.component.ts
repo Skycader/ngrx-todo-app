@@ -27,7 +27,7 @@ export class TodoItemComponent {
     );
 
     if (daysLeft === 0) {
-      return hours + ' hours left';
+      return `${hours} hours left'`;
     }
 
     if (daysLeft < 0) {
