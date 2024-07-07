@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppStateInterface } from '../../../models/app-state.model';
 import { getTodosAction } from '../../store/actions/get-todos.action';
@@ -17,7 +17,7 @@ import {
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
   public todos$ = this.store.pipe(select(todosSelector));
 
   constructor(private store: Store<AppStateInterface>) {}

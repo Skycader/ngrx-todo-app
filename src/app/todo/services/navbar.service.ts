@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class NavbarService {
-  private _isSideNav: boolean = false;
+  private _isSideNav = false;
   constructor() { }
 
   public get isSideNav() {

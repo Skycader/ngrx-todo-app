@@ -7,8 +7,8 @@ import { ThemeService } from '../../services/theme.service';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  public currentScroll: number = 0;
-  public hideNavbar: boolean = false;
+  public currentScroll = 0;
+  public hideNavbar = false;
 
   @HostListener('window:scroll', ['$event.target'])
   onScroll() {

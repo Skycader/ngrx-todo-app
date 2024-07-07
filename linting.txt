@@ -1,0 +1,148 @@
+╭─axl@ARCH ~/projects/angular/codeShotsWithProfanis ‹29/angular-ngxs-intro›
+╰─$ cd
+╭─axl@ARCH ~
+╰─$ cd projects/angular/ngrx-todo-app
+╭─axl@ARCH ~/projects/angular/ngrx-todo-app ‹main›
+╰─$ ng lint
+Cannot find "lint" target for the specified project.
+You can add a package that implements these capabilities.
+
+For example:
+  ESLint: ng add @angular-eslint/schematics
+
+Would you like to add ESLint now? Yes
+ℹ Using package manager: yarn
+✔ Found compatible package version: @angular-eslint/schematics@18.1.0.
+✔ Package information loaded.
+
+The package @angular-eslint/schematics@18.1.0 will be installed and executed.
+Would you like to proceed? Yes
+✔ Packages successfully installed.
+
+    All angular-eslint dependencies have been successfully installed 🎉
+
+    Please see https://github.com/angular-eslint/angular-eslint for how to add ESLint configuration to your project.
+
+    We detected that you have a single project in your workspace and no existing linter wired up, so we are configuring ESLint for you automatically.
+
+    Please see https://github.com/angular-eslint/angular-eslint for more information.
+
+CREATE eslint.config.js (969 bytes)
+UPDATE package.json (2485 bytes)
+UPDATE angular.json (3797 bytes)
+✔ Packages installed successfully.
+╭─axl@ARCH ~/projects/angular/ngrx-todo-app ‹main●›
+╰─$ ng lint                                                                                                                                                                                                      1 ↵
+
+Linting "ngrx-todo-app"...
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/app.component.spec.ts
+  1:10  error  'TestBed' is defined but never used              @typescript-eslint/no-unused-vars
+  2:10  error  'RouterTestingModule' is defined but never used  @typescript-eslint/no-unused-vars
+  3:10  error  'AppComponent' is defined but never used         @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/app.module.ts
+  13:10  error  'MaterialModule' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/navbar/navbar.component.spec.ts
+  1:10  error  'ComponentFixture' is defined but never used  @typescript-eslint/no-unused-vars
+  1:28  error  'TestBed' is defined but never used           @typescript-eslint/no-unused-vars
+  3:10  error  'NavbarComponent' is defined but never used   @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/navbar/navbar.component.ts
+  10:3  error  Type number trivially inferred from a number literal, remove type annotation    @typescript-eslint/no-inferrable-types
+  11:3  error  Type boolean trivially inferred from a boolean literal, remove type annotation  @typescript-eslint/no-inferrable-types
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/new-todo/new-todo.component.spec.ts
+  1:10  error  'ComponentFixture' is defined but never used  @typescript-eslint/no-unused-vars
+  1:28  error  'TestBed' is defined but never used           @typescript-eslint/no-unused-vars
+  3:10  error  'NewTodoComponent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/new-todo/new-todo.component.ts
+   1:21  error  'ElementRef' is defined but never used           @typescript-eslint/no-unused-vars
+   1:33  error  'ViewChild' is defined but never used            @typescript-eslint/no-unused-vars
+   1:44  error  'ViewChildren' is defined but never used         @typescript-eslint/no-unused-vars
+  19:9   error  'todo' is never reassigned. Use 'const' instead  prefer-const
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/side-nav/side-nav.component.html
+  1:1  error  click must be accompanied by either keyup, keydown or keypress event for accessibility  @angular-eslint/template/click-events-have-key-events
+  1:1  error  Elements with interaction handlers must be focusable                                    @angular-eslint/template/interactive-supports-focus
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/side-nav/side-nav.component.spec.ts
+  1:10  error  'ComponentFixture' is defined but never used  @typescript-eslint/no-unused-vars
+  1:28  error  'TestBed' is defined but never used           @typescript-eslint/no-unused-vars
+  3:10  error  'SideNavComponent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/side-nav/side-nav.component.ts
+   3:10  error  'map' is defined but never used        @typescript-eslint/no-unused-vars
+   3:19  error  'switchMap' is defined but never used  @typescript-eslint/no-unused-vars
+   3:30  error  'timer' is defined but never used      @typescript-eslint/no-unused-vars
+  57:5   error  'event' is defined but never used      @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/todo-item/todo-item.component.spec.ts
+  1:10  error  'ComponentFixture' is defined but never used   @typescript-eslint/no-unused-vars
+  1:28  error  'TestBed' is defined but never used            @typescript-eslint/no-unused-vars
+  3:10  error  'TodoItemComponent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/todo-list/todo-list.component.spec.ts
+  15:10  error  'Todo' is defined but never used                @typescript-eslint/no-unused-vars
+  17:10  error  'addTodoAction' is defined but never used       @typescript-eslint/no-unused-vars
+  18:10  error  'checkTodoAction' is defined but never used     @typescript-eslint/no-unused-vars
+  19:10  error  'Subject' is defined but never used             @typescript-eslint/no-unused-vars
+  22:7   error  'component' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  26:7   error  'store' is assigned a value but never used      @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/components/todo-list/todo-list.component.ts
+  10:3  error    'CdkDragDrop' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  11:3  error    'moveItemInArray' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  12:3  error    'transferArrayItem' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  25:3  warning  Lifecycle interface 'OnInit' should be implemented for method 'ngOnInit'. (https://angular.dev/style-guide#style-09-01)  @angular-eslint/use-lifecycle-interface
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/layouts/todo-layout/todo-layout.component.spec.ts
+  1:10  error  'ComponentFixture' is defined but never used     @typescript-eslint/no-unused-vars
+  1:28  error  'TestBed' is defined but never used              @typescript-eslint/no-unused-vars
+  3:10  error  'TodoLayoutComponent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/layouts/todo-layout/todo-layout.component.ts
+  2:10  error  'TodoService' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/services/loading-bar.service.ts
+  15:17  error  Unexpected empty constructor  @typescript-eslint/no-empty-function
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/services/navbar.service.ts
+  7:3   error  Type boolean trivially inferred from a boolean literal, remove type annotation  @typescript-eslint/no-inferrable-types
+  8:17  error  Unexpected empty constructor                                                    @typescript-eslint/no-empty-function
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/services/persistance.service.ts
+   8:3   error  Type boolean trivially inferred from a boolean literal, remove type annotation  @typescript-eslint/no-inferrable-types
+  24:37  error  Unexpected any. Specify a different type                                        @typescript-eslint/no-explicit-any
+  44:14  error  'e' is defined but never used                                                   @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/services/theme.service.ts
+  23:5  error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  41:5  error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/services/todo.service.spec.ts
+  1:10  error  'TestBed' is defined but never used      @typescript-eslint/no-unused-vars
+  3:10  error  'TodoService' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/services/todo.service.ts
+   3:28  error  'of' is defined but never used  @typescript-eslint/no-unused-vars
+  11:17  error  Unexpected empty constructor    @typescript-eslint/no-empty-function
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/store/effects/todos.effect.ts
+  7:22  error  'delay' is defined but never used  @typescript-eslint/no-unused-vars
+  7:49  error  'tap' is defined but never used    @typescript-eslint/no-unused-vars
+
+/home/axl/projects/angular/ngrx-todo-app/src/app/todo/utils/directives/while.directive.ts
+  4:13  error  The selector should start with one of these prefixes: "app" (https://angular.dev/style-guide#style-02-08)  @angular-eslint/directive-selector
+  8:38  error  Unexpected any. Specify a different type                                                                   @typescript-eslint/no-explicit-any
+
+✖ 58 problems (57 errors, 1 warning)
+  5 errors and 1 warning potentially fixable with the `--fix` option.
+
+Lint warnings found in the listed files.
+
+Lint errors found in the listed files.
+
+╭─axl@ARCH ~/projects/angular/ngrx-todo-app ‹main●›

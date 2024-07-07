@@ -10,7 +10,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TodoModule } from './todo/todo.module';
-import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent],

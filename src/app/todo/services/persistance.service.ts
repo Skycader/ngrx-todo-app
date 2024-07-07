@@ -5,7 +5,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
   providedIn: 'root',
 })
 export class PersistanceService {
-  public isBrowser: boolean = false;
+  public isBrowser = false;
   constructor(@Inject(PLATFORM_ID) private platformId: string) {
     this.isBrowser = isPlatformBrowser(platformId);
   }

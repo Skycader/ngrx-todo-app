@@ -16,7 +16,7 @@ export class NewTodoComponent {
   constructor(private store: Store<AppStateInterface>) { }
 
   public addTodo(): void {
-    let todo: TodoInterface = {
+    const todo: TodoInterface = {
       id: Date.now(),
       title: this.todoTitle,
       description: '',
