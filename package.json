@@ -9,8 +9,8 @@
     "deploy": "yarn build && yarn upload",
     "serve-public": "ng serve --host 0.0.0.0",
     "test": "ng test",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:run": "cypress run --e2e",
     "e2e": "concurrently \"npm run serve\" \"wait-on http-get://localhost:4200 && npm run cy:run\" --kill-others --success first",
     "e2e-gui": "concurrently \"npm run serve\" \"wait-on http-get://localhost:4200 && npm run cy:open\" --kill-others --success first",
     "lint": "ng lint"

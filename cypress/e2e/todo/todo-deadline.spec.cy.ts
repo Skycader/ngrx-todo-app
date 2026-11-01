@@ -1,6 +1,6 @@
 describe('Check if deadline works correctly', () => {
   it('should add an intime todo, also check if mat tooltip works fine', () => {
-    cy.visit('http://localhost:4200');
+    cy.visit('/');
     indexedDB.deleteDatabase('ngrx-todo-db');
     cy.get('#todo-title-input').type('Walk the dogs');
     cy.get('#set-deadline-btn').click();
@@ -17,12 +17,12 @@ describe('Check if deadline works correctly', () => {
     cy.get('.mdc-tooltip').should('contain.text', 'days left');
 
     cy.clock(Date.UTC(new Date().getFullYear() + 1, 6, 23), ['Date']); //let's assume it's been 1 year awaiting;
-    cy.visit('http://localhost:4200');
+    cy.visit('/');
     cy.get('.todo-item').first().should('have.class', 'overdue');
   });
 
   it('should add an overdue todo', () => {
-    cy.visit('http://localhost:4200');
+    cy.visit('/');
     indexedDB.deleteDatabase('ngrx-todo-db');
     cy.get('#todo-title-input').type('Walk the dogs');
     cy.get('#add-todo-btn').click();
